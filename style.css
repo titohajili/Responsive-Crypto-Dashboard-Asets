@@ -24,6 +24,13 @@
     --border-radius-2:6px;
 }
 
+.dark-theme{
+    --color-white:#131316;
+    --color-light:#23232a;
+    --color-dark:#ddd;
+    --color-gray-dark:#adacb5;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -238,7 +245,7 @@ main aside{
 
 }
 /* will be shown on mobile and tablets */
-main aside buton#close-btn{
+main aside button#close-btn{
     display: none;
 }
 main aside .sidebar a{
@@ -607,12 +614,74 @@ main{
 main aside{
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
     z-index: 3;
     background: var(--color-white);
     width: 22rem;
+    height: 100vh;
+    box-shadow: 2rem 0 2rem var(--color-primary-light);
+    display: none;
+    animation: showSidebar 600ms ease forwards;
+}
+@keyframes showSidebar{
+    to{
+        left: 0;
+    }
+}
+main aside button#close-btn{
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    z-index: 4;
+    background: transparent;
+    color: var(--color-dark);
+    font-size: 1.7rem;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+main aside .sidebar{
+    margin-top: 4rem;
+}
+
+main aside .updates{
+    display: none;
+}
+main section.middle .cards{
+    grid-template-columns: 1fr 1fr;
+}
+main canvas{
+    margin: 3rem 0 1rem;
+}
+
+main section.right .recent-transactions{
+    margin-top: 3rem;
 }
 
 
+}
 
+/* ======MEDIA QUERIES MOBILE PHONES============== */
+@media screen and (max-width:600px){
+    nav .profile-area{
+        gap: 2.6rem;
+    }
+    nav .profile h5, .profile i{
+        display: none;
+    }
+
+    main section.middle .cards{
+        grid-template-columns: 1fr;
+    }
+    main section.middle .fast-payment{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 3rem;
+        gap: 1.4rem;
+    }
 }
